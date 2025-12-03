@@ -55,7 +55,10 @@ select = [
     "SIM", # flake8-simplify
 ]
 ignore = [
-    "E501",  # line too long (handled by formatter)
+    "E501",    # line too long (handled by formatter)
+    "N803",    # argument name should be lowercase (API compatibility)
+    "N815",    # variable in class scope should not be mixedCase (API compatibility)
+    "SIM115",  # context manager for files (requires refactoring file upload logic)
 ]
 
 [tool.ruff.lint.isort]
