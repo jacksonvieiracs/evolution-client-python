@@ -1242,4 +1242,60 @@ The WebSocket Manager has robust error handling:
 3. Use logging for debugging and monitoring
 4. Consider implementing a heartbeat mechanism if needed
 5. Keep your API token secure and don't expose it in logs
-6. Keep your API token secure and don't expose it in logs
+
+## Contributing
+
+This project uses Python >= 3.8 and uv:
+
+### Setup Development Environment
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+git clone https://github.com/EvolutionAPI/evolution-client-python.git
+cd evolution-client-python
+
+uv sync
+```
+
+### Code Quality
+
+This project uses [ruff](https://docs.astral.sh/ruff/) for linting and formatting:
+
+```bash
+# Format code
+uv run ruff format
+
+# Check linting
+uv run ruff check
+
+# Fix auto-fixable issues
+uv run ruff check --fix
+```
+
+### Building and Publishing
+
+```bash
+# Build the package
+uv build
+
+# Publish to PyPI (requires credentials)
+uv publish
+
+# Or use the provided script
+./publish.sh
+```
+
+### Adding Dependencies
+
+```bash
+# Add a runtime dependency
+uv add package-name
+
+# Add a development dependency
+uv add --dev package-name
+```
+
+## License
+
+MIT
