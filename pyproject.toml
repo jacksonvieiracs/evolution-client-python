@@ -64,3 +64,8 @@ known-first-party = ["evolutionapi"]
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.7",
+]
