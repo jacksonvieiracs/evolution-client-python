@@ -1,8 +1,10 @@
 from typing import Literal
 
+
 class BaseProfile:
     def __init__(self, **kwargs):
         self.__dict__.update({k: v for k, v in kwargs.items() if v is not None})
+
 
 class FetchProfile(BaseProfile):
     def __init__(
@@ -13,6 +15,7 @@ class FetchProfile(BaseProfile):
             number=number,
         )
 
+
 class ProfileName(BaseProfile):
     def __init__(
         self,
@@ -21,6 +24,7 @@ class ProfileName(BaseProfile):
         super().__init__(
             name=name,
         )
+
 
 class ProfileStatus(BaseProfile):
     def __init__(
@@ -31,6 +35,7 @@ class ProfileStatus(BaseProfile):
             status=status,
         )
 
+
 class ProfilePicture(BaseProfile):
     def __init__(
         self,
@@ -39,6 +44,7 @@ class ProfilePicture(BaseProfile):
         super().__init__(
             picture=picture,
         )
+
 
 class PrivacySettings(BaseProfile):
     def __init__(

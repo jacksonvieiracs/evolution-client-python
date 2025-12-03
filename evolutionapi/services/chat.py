@@ -38,9 +38,7 @@ class ChatService:
             instance_token=instance_token,
         )
 
-    def delete_message_for_everyone(
-        self, instance_id: str, data: MessageKey, instance_token: str
-    ):
+    def delete_message_for_everyone(self, instance_id: str, data: MessageKey, instance_token: str):
         return self.client.delete(
             f"chat/deleteMessageForEveryone/{instance_id}",
             data=data.__dict__,
@@ -65,9 +63,7 @@ class ChatService:
             instance_token=instance_token,
         )
 
-    def update_message(
-        self, instance_id: str, data: UpdateMessage, instance_token: str
-    ):
+    def update_message(self, instance_id: str, data: UpdateMessage, instance_token: str):
         return self.client.post(
             f"chat/updateMessage/{instance_id}",
             data=data.__dict__,
