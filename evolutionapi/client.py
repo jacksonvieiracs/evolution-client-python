@@ -1,15 +1,16 @@
 import requests
 from requests_toolbelt import MultipartEncoder
-from .exceptions import EvolutionAuthenticationError, EvolutionNotFoundError, EvolutionAPIError
-from .services.instance import InstanceService
-from .services.instance_operations import InstanceOperationsService
-from .services.message import MessageService
+
+from .exceptions import EvolutionAPIError, EvolutionAuthenticationError, EvolutionNotFoundError
 from .services.call import CallService
 from .services.chat import ChatService
-from .services.label import LabelService
-from .services.profile import ProfileService
 from .services.group import GroupService
-from .services.websocket import WebSocketService, WebSocketManager
+from .services.instance import InstanceService
+from .services.instance_operations import InstanceOperationsService
+from .services.label import LabelService
+from .services.message import MessageService
+from .services.profile import ProfileService
+from .services.websocket import WebSocketManager, WebSocketService
 
 
 class EvolutionClient:

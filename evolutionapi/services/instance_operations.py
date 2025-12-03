@@ -1,4 +1,4 @@
-from ..models.presence import PresenceStatus, PresenceConfig
+from ..models.presence import PresenceConfig, PresenceStatus
 
 
 class InstanceOperationsService:

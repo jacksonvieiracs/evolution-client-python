@@ -1,8 +1,9 @@
-import socketio
-from typing import Callable, Dict, Any
 import logging
 import time
-from typing import Optional
+from typing import Callable
+
+import socketio
+
 from ..models.websocket import WebSocketConfig, WebSocketInfo
 
 

@@ -1,4 +1,5 @@
-from typing import Union, BinaryIO, Optional
+from typing import Optional
+
 from ..models.chat import *
 
 

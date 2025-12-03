@@ -1,8 +1,10 @@
-from typing import Union, BinaryIO
-from ..models.message import *
-from requests_toolbelt import MultipartEncoder
 import mimetypes
+from typing import BinaryIO, Union
+
 import requests
+from requests_toolbelt import MultipartEncoder
+
+from ..models.message import *
 
 
 class MessageService:

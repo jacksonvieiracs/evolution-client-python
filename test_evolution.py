@@ -1,9 +1,8 @@
-from evolutionapi.client import EvolutionClient
-from evolutionapi.models.instance import InstanceConfig
-from evolutionapi.models.message import TextMessage, MediaMessage, MediaType
-from evolutionapi.models.websocket import WebSocketConfig
-import time
 import logging
+import time
+
+from evolutionapi.client import EvolutionClient
+from evolutionapi.models.websocket import WebSocketConfig
 
 # Configuração do logging
 logging.basicConfig(
