@@ -1,4 +1,4 @@
-from ..models.profile import *
+from ..models.profile import FetchProfile, PrivacySettings, ProfileName, ProfilePicture, ProfileStatus
 
 
 class ProfileService:

@@ -55,7 +55,7 @@ class EvolutionClient:
             error_detail = ""
             try:
                 error_detail = f" - {response.json()}"
-            except:
+            except Exception:
                 error_detail = f" - {response.text}"
             raise EvolutionAPIError(f"Erro na requisição: {response.status_code}{error_detail}")
 

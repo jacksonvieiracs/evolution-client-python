@@ -1,4 +1,4 @@
-from ..models.label import *
+from ..models.label import HandleLabel
 
 
 class LabelService:

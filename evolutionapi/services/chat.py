@@ -1,6 +1,16 @@
-from typing import Optional
+from typing import List, Optional
 
-from ..models.chat import *
+from ..models.chat import (
+    ArchiveChat,
+    CheckIsWhatsappNumber,
+    MediaMessage,
+    MessageKey,
+    Presence,
+    ProfilePicture,
+    ReadMessage,
+    UnreadChat,
+    UpdateMessage,
+)
 
 
 class ChatService:

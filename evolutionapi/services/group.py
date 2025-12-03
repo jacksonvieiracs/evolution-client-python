@@ -1,4 +1,13 @@
-from ..models.group import *
+from ..models.group import (
+    CreateGroup,
+    GroupDescription,
+    GroupInvite,
+    GroupPicture,
+    GroupSubject,
+    ToggleEphemeral,
+    UpdateParticipant,
+    UpdateSetting,
+)
 
 
 class GroupService:

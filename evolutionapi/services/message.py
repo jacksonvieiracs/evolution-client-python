@@ -4,7 +4,22 @@ from typing import BinaryIO, Union
 import requests
 from requests_toolbelt import MultipartEncoder
 
-from ..models.message import *
+from ..models.message import (
+    Button,
+    ButtonMessage,
+    Contact,
+    ContactMessage,
+    ListMessage,
+    ListRow,
+    ListSection,
+    LocationMessage,
+    MediaMessage,
+    PollMessage,
+    QuotedMessage,
+    ReactionMessage,
+    StatusMessage,
+    TextMessage,
+)
 
 
 class MessageService:

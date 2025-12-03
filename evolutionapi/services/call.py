@@ -1,4 +1,4 @@
-from ..models.call import *
+from ..models.call import FakeCall
 
 
 class CallService:
