@@ -1,27 +1,45 @@
-from typing import Optional, List, Dict
+from typing import Dict, List
+
 
 class WebhookConfig:
-    def __init__(self, url: str = None, byEvents: bool = False, base64: bool = True,
-                 headers: Dict = None, events: List[str] = None):
+    def __init__(
+        self,
+        url: str = None,
+        byEvents: bool = False,
+        base64: bool = True,
+        headers: Dict = None,
+        events: List[str] = None,
+    ):
         self.url = url
         self.byEvents = byEvents
         self.base64 = base64
         self.headers = headers
         self.events = events
 
+
 class EventsConfig:
     def __init__(self, enabled: bool = True, events: List[str] = None):
         self.enabled = enabled
         self.events = events
 
+
 class ChatwootConfig:
-    def __init__(self, accountId: str = None, token: str = None, url: str = None,
-                 signMsg: bool = True, reopenConversation: bool = True,
-                 conversationPending: bool = False, importContacts: bool = True,
-                 nameInbox: str = "evolution", mergeBrazilContacts: bool = True,
-                 importMessages: bool = True, daysLimitImportMessages: int = 3,
-                 organization: str = "Evolution Bot",
-                 logo: str = "https://evolution-api.com/files/evolution-api-favicon.png"):
+    def __init__(
+        self,
+        accountId: str = None,
+        token: str = None,
+        url: str = None,
+        signMsg: bool = True,
+        reopenConversation: bool = True,
+        conversationPending: bool = False,
+        importContacts: bool = True,
+        nameInbox: str = "evolution",
+        mergeBrazilContacts: bool = True,
+        importMessages: bool = True,
+        daysLimitImportMessages: int = 3,
+        organization: str = "Evolution Bot",
+        logo: str = "https://evolution-api.com/files/evolution-api-favicon.png",
+    ):
         self.chatwootAccountId = accountId
         self.chatwootToken = token
         self.chatwootUrl = url
@@ -35,6 +53,7 @@ class ChatwootConfig:
         self.chatwootDaysLimitImportMessages = daysLimitImportMessages
         self.chatwootOrganization = organization
         self.chatwootLogo = logo
+
 
 class InstanceConfig:
     def __init__(
@@ -50,10 +69,10 @@ class InstanceConfig:
         alwaysOnline: bool = None,
         readMessages: bool = None,
         readStatus: bool = None,
-        syncFullHistory: bool = None
+        syncFullHistory: bool = None,
     ):
-        self.__dict__['instanceName'] = instanceName
-        
+        self.__dict__["instanceName"] = instanceName
+
         for key, value in locals().items():
-            if key != 'self' and key != 'instanceName' and value is not None:
+            if key != "self" and key != "instanceName" and value is not None:
                 self.__dict__[key] = value

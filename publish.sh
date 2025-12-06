@@ -3,10 +3,10 @@
 # Limpa diretório dist anterior se existir
 rm -rf dist/*
 
-# Gera os arquivos de distribuição
-python setup.py sdist bdist_wheel
+# Gera os arquivos de distribuição usando uv
+uv build
 
-# Faz upload para o PyPI
-twine upload dist/*
+# Faz upload para o PyPI usando uv
+uv publish
 
 echo "Pacote publicado com sucesso!"

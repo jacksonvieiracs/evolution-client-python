@@ -1,17 +1,19 @@
 from enum import Enum
 from typing import List, Optional, Union
-from dataclasses import dataclass
+
 
 class MediaType(Enum):
     IMAGE = "image"
     VIDEO = "video"
     DOCUMENT = "document"
 
+
 class StatusType(Enum):
     TEXT = "text"
     IMAGE = "image"
     VIDEO = "video"
     AUDIO = "audio"
+
 
 class FontType(Enum):
     SERIF = 1
@@ -20,13 +22,16 @@ class FontType(Enum):
     BEBASNEUE_REGULAR = 4
     OSWALD_HEAVY = 5
 
+
 class BaseMessage:
     def __init__(self, **kwargs):
         self.__dict__.update({k: v for k, v in kwargs.items() if v is not None})
 
+
 class QuotedMessage(BaseMessage):
     def __init__(self, key: dict, message: Optional[dict] = None):
         super().__init__(key=key, message=message)
+
 
 class TextMessage(BaseMessage):
     def __init__(
@@ -37,7 +42,7 @@ class TextMessage(BaseMessage):
         quoted: Optional[QuotedMessage] = None,
         linkPreview: Optional[bool] = None,
         mentionsEveryOne: Optional[bool] = None,
-        mentioned: Optional[List[str]] = None
+        mentioned: Optional[List[str]] = None,
     ):
         super().__init__(
             number=number,
@@ -46,8 +51,9 @@ class TextMessage(BaseMessage):
             quoted=quoted.__dict__ if quoted else None,
             linkPreview=linkPreview,
             mentionsEveryOne=mentionsEveryOne,
-            mentioned=mentioned
+            mentioned=mentioned,
         )
+
 
 class MediaMessage(BaseMessage):
     def __init__(
@@ -61,26 +67,27 @@ class MediaMessage(BaseMessage):
         delay: Optional[Union[int, float, str]] = None,
         quoted: Optional[QuotedMessage] = None,
         mentionsEveryOne: Optional[bool] = None,
-        mentioned: Optional[List[str]] = None
+        mentioned: Optional[List[str]] = None,
     ):
         data = {
-            'number': number,
-            'mediatype': mediatype,
-            'caption': caption,
-            'mimetype': mimetype,
-            'fileName': fileName,
-            'quoted': quoted.__dict__ if quoted else None,
-            'mentionsEveryOne': mentionsEveryOne,
-            'mentioned': mentioned
+            "number": number,
+            "mediatype": mediatype,
+            "caption": caption,
+            "mimetype": mimetype,
+            "fileName": fileName,
+            "quoted": quoted.__dict__ if quoted else None,
+            "mentionsEveryOne": mentionsEveryOne,
+            "mentioned": mentioned,
         }
-        
+
         if delay is not None:
-            data['delay'] = delay
-        
+            data["delay"] = delay
+
         if media and media != {}:
-            data['media'] = media
-            
+            data["media"] = media
+
         super().__init__(**{k: v for k, v in data.items() if v is not None})
+
 
 class StatusMessage(BaseMessage):
     def __init__(
@@ -91,7 +98,7 @@ class StatusMessage(BaseMessage):
         backgroundColor: Optional[str] = None,
         font: Optional[FontType] = None,
         allContacts: bool = False,
-        statusJidList: Optional[List[str]] = None
+        statusJidList: Optional[List[str]] = None,
     ):
         super().__init__(
             type=type.value,
@@ -100,8 +107,9 @@ class StatusMessage(BaseMessage):
             backgroundColor=backgroundColor,
             font=font.value if font else None,
             allContacts=allContacts,
-            statusJidList=statusJidList
+            statusJidList=statusJidList,
         )
+
 
 class LocationMessage(BaseMessage):
     def __init__(
@@ -112,7 +120,7 @@ class LocationMessage(BaseMessage):
         latitude: float,
         longitude: float,
         delay: Optional[int] = None,
-        quoted: Optional[QuotedMessage] = None
+        quoted: Optional[QuotedMessage] = None,
     ):
         super().__init__(
             number=number,
@@ -121,8 +129,9 @@ class LocationMessage(BaseMessage):
             latitude=latitude,
             longitude=longitude,
             delay=delay,
-            quoted=quoted.__dict__ if quoted else None
+            quoted=quoted.__dict__ if quoted else None,
         )
+
 
 class Contact(BaseMessage):
     def __init__(
@@ -132,7 +141,7 @@ class Contact(BaseMessage):
         phoneNumber: str,
         organization: Optional[str] = None,
         email: Optional[str] = None,
-        url: Optional[str] = None
+        url: Optional[str] = None,
     ):
         super().__init__(
             fullName=fullName,
@@ -140,19 +149,19 @@ class Contact(BaseMessage):
             phoneNumber=phoneNumber,
             organization=organization,
             email=email,
-            url=url
+            url=url,
         )
+
 
 class ContactMessage(BaseMessage):
     def __init__(self, number: str, contact: List[Contact]):
-        super().__init__(
-            number=number,
-            contact=[c.__dict__ for c in contact]
-        )
+        super().__init__(number=number, contact=[c.__dict__ for c in contact])
+
 
 class ReactionMessage(BaseMessage):
     def __init__(self, key: dict, reaction: str):
         super().__init__(key=key, reaction=reaction)
+
 
 class PollMessage(BaseMessage):
     def __init__(
@@ -162,7 +171,7 @@ class PollMessage(BaseMessage):
         selectableCount: int,
         values: List[str],
         delay: Optional[int] = None,
-        quoted: Optional[QuotedMessage] = None
+        quoted: Optional[QuotedMessage] = None,
     ):
         super().__init__(
             number=number,
@@ -170,23 +179,19 @@ class PollMessage(BaseMessage):
             selectableCount=selectableCount,
             values=values,
             delay=delay,
-            quoted=quoted.__dict__ if quoted else None
+            quoted=quoted.__dict__ if quoted else None,
         )
+
 
 class ListRow(BaseMessage):
     def __init__(self, title: str, description: str, rowId: str):
-        super().__init__(
-            title=title,
-            description=description,
-            rowId=rowId
-        )
+        super().__init__(title=title, description=description, rowId=rowId)
+
 
 class ListSection(BaseMessage):
     def __init__(self, title: str, rows: List[ListRow]):
-        super().__init__(
-            title=title,
-            rows=[r.__dict__ for r in rows]
-        )
+        super().__init__(title=title, rows=[r.__dict__ for r in rows])
+
 
 class ListMessage(BaseMessage):
     def __init__(
@@ -198,7 +203,7 @@ class ListMessage(BaseMessage):
         footerText: str,
         sections: List[ListSection],
         delay: Optional[int] = None,
-        quoted: Optional[QuotedMessage] = None
+        quoted: Optional[QuotedMessage] = None,
     ):
         super().__init__(
             number=number,
@@ -208,8 +213,9 @@ class ListMessage(BaseMessage):
             footerText=footerText,
             sections=[s.__dict__ for s in sections],
             delay=delay,
-            quoted=quoted.__dict__ if quoted else None
+            quoted=quoted.__dict__ if quoted else None,
         )
+
 
 class Button(BaseMessage):
     def __init__(
@@ -223,7 +229,7 @@ class Button(BaseMessage):
         currency: Optional[str] = None,
         name: Optional[str] = None,
         keyType: Optional[str] = None,
-        key: Optional[str] = None
+        key: Optional[str] = None,
     ):
         super().__init__(
             type=type,
@@ -235,8 +241,9 @@ class Button(BaseMessage):
             currency=currency,
             name=name,
             keyType=keyType,
-            key=key
+            key=key,
         )
+
 
 class ButtonMessage(BaseMessage):
     def __init__(
@@ -247,7 +254,7 @@ class ButtonMessage(BaseMessage):
         footer: str,
         buttons: List[Button],
         delay: Optional[int] = None,
-        quoted: Optional[QuotedMessage] = None
+        quoted: Optional[QuotedMessage] = None,
     ):
         super().__init__(
             number=number,
@@ -256,5 +263,5 @@ class ButtonMessage(BaseMessage):
             footer=footer,
             buttons=[b.__dict__ for b in buttons],
             delay=delay,
-            quoted=quoted.__dict__ if quoted else None
+            quoted=quoted.__dict__ if quoted else None,
         )
